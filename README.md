@@ -73,6 +73,8 @@ src/
     asyncHandler.js
 docs/
   openapi.yaml            # especificação Swagger/OpenAPI (fonte da documentação)
+.env
+.env.example
 ```
 
 ## Instalação e execução
