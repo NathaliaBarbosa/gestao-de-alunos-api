@@ -1,11 +1,12 @@
 import 'dotenv/config';
-import { api } from './api.js'
+import { api } from './api.js' 
 
-let tokenEmCache = null
+let tokenEmCacheAdmin = null;
+let tokenEmCacheAlunoJacriado = null;
 
 export async function comTokenDeAdmin() {
    //SE NÃO TIVER TOKEN EM CACHE FAZER... 
-   if (!tokenEmCache){ 
+   if (!tokenEmCacheAdmin){ 
     const tokenLogin = await api()
         .post ('/api/auth/login')
         .set('content-type', 'application/json')
@@ -13,7 +14,18 @@ export async function comTokenDeAdmin() {
             email: process.env.ADMIN_EMAIL,
             senha: process.env.ADMIN_SENHA
         });
-     tokenEmCache = tokenLogin.body.token;   
+     tokenEmCacheAdmin = tokenLogin.body.token;   
    }
-   return `Bearer ${tokenEmCache}`;
+   return `Bearer ${tokenEmCacheAdmin}`;
+};
+
+export async function comTokenDeAlunoJaCriado(aluno){
+    if (!tokenEmCacheAlunoJacriado){
+     const tokenLoginAlunoJaCriado = await api()
+        .post ('/api/auth/login')
+        .set('content-type', 'application/json')
+        .send(aluno);
+     tokenEmCacheAlunoJacriado = tokenLoginAlunoJaCriado.body.token;   
+   }
+   return `Bearer ${tokenEmCacheAlunoJacriado}`;
 }
