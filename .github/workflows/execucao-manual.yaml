@@ -20,6 +20,11 @@ jobs:
       #instalação das dependencias necessarias para rodar o projeto
       - name: Instalando dependências
         run: npm install
+      
+      #iniciando a API
+      - name: Iniciar a API para os testes
+        run: npm start
+
       #execução dos testes
       - name: Executando os testes
         run: npm run testPipe
