@@ -8,7 +8,8 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "test": "mocha test/**/*.test.js",
-    "testPipe": "mocha test/**/provaFinal.test.js"
+    "testPipe": "mocha test/**/provaFinal.test.js",
+    "wait-api": "wait-on http://localhost:3000"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^10.6.0",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "wait-on": "^9.1.0"
   }
 }

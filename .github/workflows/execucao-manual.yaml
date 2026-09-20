@@ -21,9 +21,13 @@ jobs:
       - name: Instalando dependências
         run: npm install
       
-      #iniciando a API
+      #iniciando a API e deixando em segundo plano com o &
       - name: Iniciar a API para os testes
-        run: npm start
+        run: npm start &
+      
+      #Aguardando a API ficar on
+      - name: Aguardando a API subir
+        run: npm run wait-api
 
       #execução dos testes
       - name: Executando os testes
