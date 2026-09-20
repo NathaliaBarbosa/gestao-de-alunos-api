@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { api } from './api.js' 
+import { api } from './api.js';
 
 let tokenEmCacheAdmin = null;
 let tokenEmCacheAlunoJacriado = null;
