@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "mocha test/**/*.test.js"
+    "test": "mocha test/**/*.test.js",
+    "testPipe": "mocha test/**/provaFinal.test.js"
   },
   "author": "",
   "license": "ISC",

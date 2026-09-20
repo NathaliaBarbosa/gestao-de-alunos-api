@@ -10,7 +10,7 @@ import { expect } from 'chai';
 //status é uma propriedade
 
 describe('Testes de login', () => {
-    it('Validar retorno 200 quando o usuário e senha forem corretor', async () => {
+    it('Validar retorno 200 quando o usuário e senha forem corretos', async () => {
         const loginResposta = await request('http://localhost:3000')
             .post('/api/auth/login')
             .set('Content-Type', 'application/json')

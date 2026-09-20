@@ -6,7 +6,7 @@ import request from 'supertest';
 
 describe('Validar a API de Alunos', () => {
     const aluno = novoAluno();
-    it.only('Usando os arquivos helpers- Validar o cadastro correto de um aluno', async () => {
+    it('Usando os arquivos helpers- Validar o cadastro correto de um aluno', async () => {
         const cadastroDeAluno = await api()
             .post('/api/admin/alunos')
             .set('content-type', 'application/json')
@@ -52,7 +52,7 @@ describe('Validar a API de Alunos', () => {
           expect(cadastroDeAluno.status).to.equal(201);
     });
 
-    it.only('Utilizando os helpers e deixando o teste DEPENDENTE de outro it- Validar erro 409 ao tentar efetuar o cadastro de um aluno já cadastrado', async ()=> {
+    it('Utilizando os helpers e deixando o teste DEPENDENTE de outro it- Validar erro 409 ao tentar efetuar o cadastro de um aluno já cadastrado', async ()=> {
         const cadastroDoMesmoAluno = await api()
             .post('/api/admin/alunos')
             .set('content-type', 'application/json')
@@ -70,7 +70,7 @@ describe('Validar a API de Alunos', () => {
 });
 
 describe('Utilizando os arquivos helpers - Validação do cadastro de aluno e erro ao cadastrar o mesmo aluno em testes independentes ', ()=>{
-    it.only('Validar o cadastro correto de um aluno', async ()=> {
+    it('Validar o cadastro correto de um aluno', async ()=> {
         const cadastroDeAluno = await api()
             .post('/api/admin/alunos')
             .set('content-type', 'application/json')
@@ -89,7 +89,7 @@ describe('Utilizando os arquivos helpers - Validação do cadastro de aluno e er
         expect(cadastroDeAluno.body.role).to.not.be.empty;
     });
 
-    it.only('Validar erro ao tentar cadastrar um aluno já existente', async ()=> {
+    it('Validar erro ao tentar cadastrar um aluno já existente', async ()=> {
         //esse banco de dados que estamos usando já tem alunos cadastrados como padrão então podemos utilizar eles
         const cadastroAlunoExistente = await api()
             .post('/api/admin/alunos')
