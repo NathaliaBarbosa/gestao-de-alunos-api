@@ -17,12 +17,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24.x
-      #instalação do YARN = gerenciados de instalações
-      - name: Instalando o yarn
-        run: npm install - g yarn
       #instalação das dependencias necessarias para rodar o projeto
       - name: Instalando dependências
-        run: yarn
+        run: npm install
       #execução dos testes
       - name: Executando os testes
         run: npm run testPipe
