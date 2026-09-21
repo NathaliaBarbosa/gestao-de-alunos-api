@@ -9,6 +9,13 @@ jobs:
   e2e-tests:
     #maquina que vai rodar
     runs-on: ubuntu-latest
+
+    #configurações do ambiente do arquivo env que foi configurado no github
+    env:
+      BASE_URL: ${{ secrets.BASE_URL }}
+      ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+      ADMIN_SENHA: ${{ secrets.ADMIN_SENHA }}
+
     #passos do job
     steps:
       #clonar o projeto
