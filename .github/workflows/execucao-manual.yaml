@@ -9,6 +9,13 @@ jobs:
   e2e-tests:
     #maquina que vai rodar
     runs-on: ubuntu-latest
+
+    #configurações do ambiente do arquivo env que foi configurado no github
+    env:
+      BASE_URL: ${{ secrets.BASE_URL }}
+      ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+      ADMIN_SENHA: ${{ secrets.ADMIN_SENHA }}
+
     #passos do job
     steps:
       #clonar o projeto
@@ -17,12 +24,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24.x
-      #instalação do YARN = gerenciados de instalações
-      - name: Instalando o yarn
-        run: npm install - g yarn
       #instalação das dependencias necessarias para rodar o projeto
       - name: Instalando dependências
-        run: yarn
+        run: npm install
+      
+      #iniciando a API e deixando em segundo plano com o &
+      - name: Iniciar a API para os testes
+        run: npm start &
+      
+      #Aguardando a API ficar on
+      - name: Aguardando a API subir
+        run: npm run wait-api
+
       #execução dos testes
       - name: Executando os testes
         run: npm run testPipe
